@@ -26,15 +26,10 @@
           <label for="name">Name</label>
           <input type="text" onblur=nameValidation() value="" placeholder="Sudip Saha" id="name" name="name">
           <br/>
-          <label for="roll_no">Roll No</label>
-          <input type="text" onblur=rollNoValidation() name="roll_no" id="" placeholder="15/IT/XX">
-          <br/>
-          <label for="registration_no">Registration No</label>
-          <input type="text" onblur=registrationNoValidation() name="registration_no" id="registration_no" placeholder="2015XXXX">
-          <br/>
           <label for="department">Departement</label>
           <br/>
           <select name="departement" id="department" class="dropdown">
+              <option value="0">select departement</option>
               <option value="1">IT</option>
               <option value="2">CSE</option>
               <option value="3">ECE</option>
@@ -43,10 +38,14 @@
           <label for="sesssion">Session</label>
           <br/>
           <select name="session" id="session" class="dropdown">
-              <option value="1">2017-2021</option>
-              <option value="2">2015-2019</option>
-              <option value="3">2016-2020</option>
+              <option value="0">Select Session</option>
+              <option value="17">2017-2021</option>
+              <option value="15">2015-2019</option>
+              <option value="16">2016-2020</option>
           </select>
+          <br/>
+          <label for="roll_no">Roll No</label>
+          <input type="text" onblur=rollNoValidation() name="roll_no" id="rollno" placeholder="15/IT/XX">
           <br/>
           <label for="degree">Degree</label>
           <br/>
@@ -55,6 +54,9 @@
               <option value="2">M.TECH</option>
               <option value="3">MCA</option>
           </select>
+          <br/>
+          <label for="registration_no">Registration No</label>
+          <input type="text" onblur=registrationNoValidation() name="registration_no" id="registration_no" placeholder="2015XXXX">
           <br/>
           <label for="email">Email Id</label>
           <input type="email" onblur="emailValidation()" name="email" id="email" placeholder="nitdgp@btech.com">
@@ -80,4 +82,22 @@
       </div>
       <script src="js/profile.js"></script>
 </body>
+<script>
+  var dept=document.getElementById("department");
+  var roll_no=document.getElementById("rollno");
+  var session=document.getElementById("session");
+  var a="";
+  var b="";
+    dept.addEventListener("change",function(){
+         a=dept.options[dept.selectedIndex].text;
+   
+
+    });
+    session.addEventListener("change",function(){
+        b=session.value;
+        roll_no.value=b+"/"+a+"/";
+    })
+
+
+</script>
 </html>
