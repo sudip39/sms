@@ -16,7 +16,12 @@ function nameValidation() {
 }
 
 function rollNoValidation() {
+  var rollno=document.getElementById("rollno").value;
 
+  if(rollno.length!=8)
+  {
+    alert("Invalid roll no");
+  }
 
 }
 

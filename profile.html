@@ -24,7 +24,7 @@
       <form action="save_profile.php" method="post">
               <header>Details</header>
           <label for="name">Name</label>
-          <input type="text" onblur=nameValidation() value="" placeholder="Sudip Saha" id="name" name="name">
+          <input type="text" onblur=nameValidation() required value="" placeholder="Sudip Saha" id="name" name="name">
           <br/>
           <label for="department">Departement</label>
           <br/>
@@ -45,7 +45,7 @@
           </select>
           <br/>
           <label for="roll_no">Roll No</label>
-          <input type="text" onblur=rollNoValidation() name="roll_no" id="rollno" placeholder="15/IT/XX">
+          <input type="text" onblur=rollNoValidation() name="roll_no" required id="rollno" placeholder="15/IT/XX">
           <br/>
           <label for="degree">Degree</label>
           <br/>
@@ -56,10 +56,10 @@
           </select>
           <br/>
           <label for="registration_no">Registration No</label>
-          <input type="text" onblur=registrationNoValidation() name="registration_no" id="registration_no" placeholder="2015XXXX">
+          <input type="text" onblur=registrationNoValidation() required name="registration_no" id="registration_no" placeholder="2015XXXX">
           <br/>
           <label for="email">Email Id</label>
-          <input type="email" onblur="emailValidation()" name="email" id="email" placeholder="nitdgp@btech.com">
+          <input type="email" onblur="emailValidation()" name="email" required pattern=" [a-z.0-9]+@[a-z.]+[.a-z]+" id="email" placeholder="nitdgp@btech.com">
 
           <label for="present_address">Present Address</label>
           <input type="text" onblur=validation() name="present_address" id="present_address">
@@ -71,10 +71,10 @@
           <input type="text" onblur=validation() name="cgpa" id="cgpa">
 
           <label for="phone_number">Phone Number</label>
-          <input type="text" onblur=validation() name="phone_number" id="phone_number">
+          <input type="text" onblur=validation() required pattern="[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" name="phone_number" id="phone_number">
 
           <label for="parent_phone_number">Parent Phone Number</label>
-          <input type="text" onblur=validation() name="parent_phone_number" id="phone_number">
+          <input type="text" onblur=validation() required pattern="[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" name="parent_phone_number" id="phone_number">
 
           <button type="submit">Save</button>
 
@@ -86,6 +86,7 @@
   var dept=document.getElementById("department");
   var roll_no=document.getElementById("rollno");
   var session=document.getElementById("session");
+  var regno=document.getElementById("registration_no")
   var a="";
   var b="";
     dept.addEventListener("change",function(){
@@ -96,6 +97,9 @@
     session.addEventListener("change",function(){
         b=session.value;
         roll_no.value=b+"/"+a+"/";
+    
+            regno.value="20"+b;
+    
     })
 
 
