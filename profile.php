@@ -102,15 +102,14 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
   var b="";
     dept.addEventListener("change",function(){
          a=dept.options[dept.selectedIndex].text;
-   
 
     });
     session.addEventListener("change",function(){
         b=session.value;
         roll_no.value=b+"/"+a+"/";
-    
+
             regno.value="20"+b;
-    
+
     })
     var user=document.getElementById('username').value;
     document.getElementById('user').children[0].text=user;
