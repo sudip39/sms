@@ -1,4 +1,10 @@
-
+<?php
+include("header.php");
+    if($_GET['c']==1)
+    {
+        echo "<script>alert('User Already Exist');</script>";
+    }
+?>
 <html>
     <head>
     <title>Signup</title> 
@@ -7,10 +13,10 @@
     </head>
     <body>
             <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <div  style="float:right;">
-                        <li><a href="login.html">login</a></li>
-                    <li><a href="./student.html">Signup</a></li>
+                        <li><a href="login.php">login</a></li>
+                    <li><a href="./signup.php">Signup</a></li>
                     </div>
                     
                   </ul> 
@@ -38,3 +44,15 @@
         </div>
     </body>
 </html>
+
+<script>
+function nameValidation() {
+  var name = document.getElementById("name").value;
+  // console.log(name);
+  var regexp1=new RegExp("[^a-z A-Z,.]");
+  if(regexp1.test(name)) {
+    alert("Enter proper name");
+  }
+}
+</script>
+<?php include("footer.php") ?>

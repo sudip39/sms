@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 else {
-echo "Connected successfully";
+
 
 $reg_no=$_POST['Registration'];
 $pass=$_POST['pass'];
@@ -21,16 +21,16 @@ $name=$_POST['name'];
 $sql="insert into student(reg_no,pass,name) values('$reg_no','$pass','$name')";
 if($conn->query($sql) ===true)
 {
-    echo "<script> alert('Successfully signed up')</script>";
+   
     header('Location: '.'profile.php?name='.urlencode($name));
 }
-else 
-{
-    echo "error";
+else {
+    header('Location: '.'signup.php?c='.urlencode(1));
 }
- 
- 
 
+ 
+ 
+/*
 $department=$_POST['department'];
 $rollno=$_POST['rollno'];
 $degree=$_POST['degree'];
@@ -48,7 +48,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
- }
+ }*/
 $conn->close();
 }
 ?>

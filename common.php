@@ -6,4 +6,6 @@ $db_name = "sms";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db_name);
+session_start();
+
 ?>

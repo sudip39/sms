@@ -1,31 +1,32 @@
 <?php
 include("./common.php");
-session_start();
+include("./header.php");
 $name=$_GET['name'];
+if(isset($_SESSION['id']))
 echo "<input type='text' id='username' hidden='true' value='$name'>";
+else
+ {
+     echo "<h1>Session Expired,Please log in to your account</h1>";
+     exit();
+ }
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="student.css">
 
-    <title>Profile</title>
-</head>
 <body>
     <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <div  style="float:right;">
             <li id="user"><a href="login.html"></a></li>
-        <li><a href="./student.html">Sign Out</a></li>
+        <li><a href="./logout.php" >Sign Out</a></li>
         </div>
 
       </ul>
-      <h1 class="header">Student Profile</h1>
+     
+  
+</ul>
+
+<h1 class="header">Student Profile</h1>
       <div class="container">
 
       <form action="save_profile.php" method="post">
@@ -33,21 +34,23 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
 
           <label for="department">Departement</label>
           <br/>
-          <select name="departement" id="department" class="dropdown">
-              <option value="0">select departement</option>
-              <option value="1">IT</option>
-              <option value="2">CS</option>
-              <option value="3">CE</option>
-              <option value="4">BT</option>
-              <option value="5">CH</option>
-              <option value="6">EE</option>
-              <option value="7">ME</option>
-              <option value="8">MM</option>
-          </select>
-          <br/>
+        
+                
+                <select name="department" id="department" class="dropdown">
+                <option value="0">select departement</option>
+                <option value="IT">IT</option>
+                <option value="CS">CS</option>
+                <option value="CE">CE</option>
+                <option value="BT">BT</option>
+                <option value="CH">CH</option>
+                <option value="EE">EE</option>
+                <option value="ME">ME</option>
+                <option value="MM">MM</option>
+            </select>
+            <br/>
           <label for="sesssion">Session</label>
           <br/>
-          <select name="session" id="session" class="dropdown">
+          <select name="sess" id="session" class="dropdown">
               <option value="0">Select Session</option>
               <option value="17">2017-2021</option>
               <option value="15">2015-2019</option>
@@ -60,37 +63,38 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
           <label for="degree">Degree</label>
           <br/>
           <select name="degree" id="" class="dropdown">
-              <option value="1">B.TECH</option>
-              <option value="2">M.TECH</option>
-              <option value="3">MCA</option>
+              <option value="B>TECH">B.TECH</option>
+              <option value="M.TECH">M.TECH</option>
+              <option value="MCA">MCA</option>
           </select>
           <br/>
-          <label for="registration_no">Registration No</label>
-          <input type="text" onblur=registrationNoValidation() required name="registration_no" id="registration_no" placeholder="2015XXXX">
-          <br/>
           <label for="email">Email Id</label>
-          <input type="email" onblur="emailValidation()" name="email"  id="email" placeholder="nitdgp@btech.com">
+          <input type="email" onblur="emailValidation()" name="email" reuqired id="email" placeholder="nitdgp@btech.com">
 
           <label for="present_address">Present Address</label>
           <input type="textarea" onblur=validation() name="present_address" id="present_address">
-
-          <label for="permanent_address">Permanent Address</label>
+        <label for="permanent_address">Permanent Address</label>             
           <input type="textarea" name="permanent_address" id="permanent_address">
 
           <label for="cgpa">CGPA</label>
-          <input type="text" onblur=validation() name="cgpa" id="cgpa">
+          <input type="text" onblur=cgpaValidation() name="cgpa" id="cgpa">
 
           <label for="phone_number">Phone Number</label>
-          <input type="text" onblur=validation()  name="phone_number" id="phone_number">
+          <input type="textbox" onblur=phonevalidation()  name="phone_number" id="phone_number">
 
           <label for="parent_phone_number">Parent Phone Number</label>
-          <input type="text" onblur=validation()  name="parent_phone_number" id="phone_number">
+          <input type="text" onblur=validation()  name="parent_phone_number" id="parent_phone_number">
 
           <button type="submit" name="submit">Save</button>
 
       </form>
-      </div>
-      <script src="js/profile.js"></script>
+    </div>
+  
+    
+   
+
+    
+      
 </body>
 
 <script>
@@ -114,7 +118,53 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
     var user=document.getElementById('username').value;
     document.getElementById('user').children[0].text=user;
 
+function phoneValidation() {
+
+}
+
+function cgpaValidation() {
+  var cgpa = document.getElementById("cgpa").value;
+  if (isNaN(cgpa)||cgpa<0||cgpa>10) {
+    alert("Not a valid cgpa value");
+  }
+
+}
+
+function emailValidation() {
+  var email = document.getElementById("email").value;
+      var atpos = email.indexOf("@");
+      var dotpos = email.lastIndexOf(".");
+      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+          alert("Not a valid e-mail address");
+          return false;
+      }
+}
+
+function nameValidation() {
+  var name = document.getElementById("name").value;
+  // console.log(name);
+  var regexp1=new RegExp("[^a-z A-Z,.]");
+  if(regexp1.test(name)) {
+    alert("Enter proper name");
+  }
+}
+
+function rollNoValidation() {
+  var rollno=document.getElementById("rollno").value;
+
+  if(rollno.length!=8)
+  {
+    alert("Invalid roll no");
+  }
+
+}
+
+function registrationNoValidation() {
+
+}
+
 
 
 </script>
 </html>
+<?php include("footer.php") ?>
