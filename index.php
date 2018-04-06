@@ -11,7 +11,7 @@ include("header.php");
         </div>
 
       </ul>
-      <h1 class="header">Welcome to Student Database Management System</h1>
+      <h1 class="header" style="color:white;">Welcome to Student Database Management System</h1>
       <div class="container">
       <form action="#" >
               <header>Home</header>

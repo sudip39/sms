@@ -10,8 +10,8 @@ include('common.php');
   while($obj=mysqli_fetch_array($result))
   {
     $_SESSION['id']= $obj['id'];
-                                    
-      header("Location:"."profile.php?name=".urlencode($obj['name']));
+    $_SESSION['name']=$obj['name'];                             
+      header("Location:"."profile.php");
   }
     
  }

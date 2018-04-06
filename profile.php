@@ -1,14 +1,11 @@
 <?php
 include("./common.php");
 include("./header.php");
-$name=$_GET['name'];
-if(isset($_SESSION['id']))
+include "check.php";
+$name=$_SESSION['name'];
+
 echo "<input type='text' id='username' hidden='true' value='$name'>";
-else
- {
-     echo "<h1>Session Expired,Please log in to your account</h1>";
-     exit();
- }
+
 
 ?>
 
@@ -17,7 +14,8 @@ else
     <ul>
         <li><a href="index.php">Home</a></li>
         <div  style="float:right;">
-            <li id="user"><a href="login.html"></a></li>
+            <li id="user"><a href="details.php"></a></li>
+
         <li><a href="./logout.php" >Sign Out</a></li>
         </div>
 
@@ -26,10 +24,10 @@ else
   
 </ul>
 
-<h1 class="header">Student Profile</h1>
+<h1 class="header" style="color:white;">Student Profile</h1>
       <div class="container">
 
-      <form action="save_profile.php" method="post">
+      <form action="save_details.php" method="post">
               <header>Details</header>
 
           <label for="department">Departement</label>
