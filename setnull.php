@@ -10,7 +10,7 @@
     }
     else
     {
-        echo $sql;
-        echo "Something went wrong";
+        
+        echo "404 Error!!Something went wrong";
     }
 ?>
