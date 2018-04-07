@@ -1,7 +1,16 @@
 <?php 
 include('common.php');
+$w=$_GET['c'];
+if($w==1)
+{
+    $reg_no=$_SESSION['reg_no'];
+    $pass=$_SESSION['pass'];
+}
+else
+{
  $reg_no=$_POST['reg_no'];
- $pass=$_POST['pass'];
+ $pass=$_POST['pass'];}
+ 
  $sql="select * from student where reg_no=$reg_no and pass='$pass' ";
  $result=$conn->query($sql);
  

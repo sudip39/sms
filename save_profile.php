@@ -1,19 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db_name = "sms";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db_name);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else {
-
-
+include "common.php";
 $reg_no=$_POST['Registration'];
 $pass=$_POST['pass'];
 $cpass=$_POST['cpass'];
@@ -21,8 +7,10 @@ $name=$_POST['name'];
 $sql="insert into student(reg_no,pass,name) values('$reg_no','$pass','$name')";
 if($conn->query($sql) ===true)
 {
+    $_SESSION['reg_no']=$reg_no;
+    $_SESSION['pass']=$pass;
    
-    header('Location: '.'profile.php?name='.urlencode($name));
+    header('Location: redirect.php?c=1');
 }
 else {
     header('Location: '.'signup.php?c='.urlencode(1));
@@ -49,6 +37,5 @@ if ($conn->query($sql) === TRUE) {
 }
 
  }*/
-$conn->close();
-}
+
 ?>
