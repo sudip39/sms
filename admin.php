@@ -29,7 +29,7 @@
     <tr>
     <td><?php echo $obj['name']; ?></td>
     <td><?php echo $obj['reg_no']; ?></td>
-    <td><a href="accept.php?id=<?php echo $obj['id']; ?>">Yes</a>/ <a href="No.php?id=<?php echo $obj['id']; ?>">No</a></td>
+    <td><a href="accept.php?id=<?php echo $obj['id']; ?>">Yes</a>/ <a href="reject.php?id=<?php echo $obj['id']; ?>">No</a></td>
 
     </tr>
     <?php }?>

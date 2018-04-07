@@ -11,7 +11,7 @@ include('common.php');
   {
     $_SESSION['id']= $obj['id'];
     $_SESSION['name']=$obj['name'];                             
-      header("Location:"."profile.php");
+      header("Location:"."active.php");
   }
     
  }

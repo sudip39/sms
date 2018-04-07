@@ -8,9 +8,16 @@
     {
         while($obj=mysqli_fetch_array($result))
         {
-            if($obj['valid']==1)
+            if(is_null($obj['valid'])){
+                    header("Location: notactive.php");
+            }
+            else if($obj['valid']==1)
             {
-                header("Location: admin.php");
+                header("Location: profile.php");
+            }
+            else 
+            {
+                header("Location:sendreq.php");
             }
         }
     }
