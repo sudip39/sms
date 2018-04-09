@@ -18,7 +18,8 @@
         $par_add=$obj['per_add'];
         $mob_no=$obj['mob_no'];
         $p_mob_no=$obj['p_mob_no'];
-        
+        $degr=$obj['degr'];
+      
 
 
     }
@@ -46,7 +47,12 @@
         <h1 style="text-align:center;"><?php echo $_SESSION['name']?></h1>
         <span style="text-align:center;"><b>Roll No :</b><?php echo $roll_no ?></span><br>
         <span><b>Cgpa: </b><?php echo $cgpa?></span><br>
-        <span><b>Mobile no:</b><?php echo $mob_no?></span>
+        <span><b>Mobile no:</b><?php echo $mob_no?></span><br>
+        <span><b>Department:</b><?php echo $dept?></span><br>
+        <span><b>Session:</b><?php  echo $sess ?></span><br>
+        <span><b>Degree:</b><?php echo $degr?></span><br>
+        <span><b>Present Address:</b><?php echo $per_add ?></span><br>
+        <span><b>Parmanent Address:</b><?php echo $par_add?></span><br>
   
 
 </body>

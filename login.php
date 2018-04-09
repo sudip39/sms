@@ -18,7 +18,7 @@ include("header.php");
             <input type="text"   name="reg_no">
             <br/>                      
             <label for="Password">Password</label>
-            <input type="password" name="pass" id="" placeholder="Enter your password">
+            <input type="password" name="pass" id="" >
             <button type="submit" name="submit">Login</button>
             
         </form>

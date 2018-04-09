@@ -25,6 +25,6 @@ else
     
  }
  else {
-     echo "Wrong";
+     header("Location: index.php");
  }
 ?>

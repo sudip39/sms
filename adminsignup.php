@@ -17,7 +17,7 @@ include("header.php");
         <div class="container">
             
         <form action="save_admin.php" method="post" > 
-                <header>Registration Form</header>  
+                <header>Admin Registration Form</header>  
                 <label for="name">Name</label>
           <input type="text" onblur=nameValidation() required   id="name" name="name">
           <br/>     
@@ -29,10 +29,10 @@ include("header.php");
             <br/> 
            
             <label for="Password">New Password</label>
-            <input type="password" name="pass" id="" placeholder="Enter new password">
+            <input type="password" name="pass" id="">
             <br/>  
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" name="cpass" id="" placeholder="Confirm password">
+            <input type="password" name="cpass" id="">
             <br/> 
             <button type="submit" name="submit">SignUp</button>
             

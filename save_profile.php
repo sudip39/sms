@@ -18,24 +18,6 @@ else {
 
  
  
-/*
-$department=$_POST['department'];
-$rollno=$_POST['rollno'];
-$degree=$_POST['degree'];
-$registration_no=$_POST['registration_no'];
-$email=$_POST['email'];
-$pre_add=$_POST['present_address'];
-$par_add=$_POST['permanent_address'];
-$ph_no=$_POST['phone_number'];
-$p_ph_no=$_POST['permanent_phone_number'];
-$sql="insert into stu_det values";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
- }*/
 
 ?>

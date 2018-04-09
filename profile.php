@@ -61,7 +61,7 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
           <label for="degree">Degree</label>
           <br/>
           <select name="degree" id="" class="dropdown">
-              <option value="B>TECH">B.TECH</option>
+              <option value="B.TECH">B.TECH</option>
               <option value="M.TECH">M.TECH</option>
               <option value="MCA">MCA</option>
           </select>
