@@ -1,10 +1,9 @@
-<?php 
-    include("common.php");
-    include("header.php");
-    include "check.php";
-    $id=$_SESSION['id'];
-    $sql="select * from stu_det where s_id=".$id;
-
+<?php include "common.php";
+      include "check.php";
+      include "header.php";
+      $id=$_GET['id'];
+      $name=$_GET['name'];
+    $sql ="select * from stu_det where s_id=$id";
     $result=$conn->query($sql);
     if($result)
     {
@@ -24,20 +23,14 @@
 
     }
     }
-    else
-    {
-        var_dump($conn->error);
-        die($result->error);
-        
-    }
-   
-
 ?>
+
 <body>
 <ul>
         <li><a href="index.php">Home</a></li>
         <div  style="float:right;">
-            <li id="user"><a href="profile.php">Edit</a></li>
+            <li id="user"><a href="admindetails.php">Userdetails</a></li>
+            <li id="user"><a href="admin.php">Pending Request</a></li>
 
         <li><a href="./logout.php" >Sign Out</a></li>
         </div>
@@ -45,7 +38,7 @@
       </ul>
     <div class="boxstyle container">
        
-        <h1 style="text-align:center;"><?php echo $_SESSION['name']?></h1>
+        <h1 style="text-align:center;"><?php echo $name;?></h1>
         <div class="container" style="padding-left:40px; padding-bottom:20px;">
         <span style="text-align:center;"><b>Roll No :</b><?php echo $roll_no ?></span><br>
         <span><b>Cgpa: </b><?php echo $cgpa?></span><br>

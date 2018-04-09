@@ -25,17 +25,17 @@ include("header.php");
         <form action="save_profile.php" method="post" > 
                 <header>Registration Form</header>  
                 <label for="name">Name</label>
-          <input type="text" onblur=nameValidation() required  placeholder="Sudip Saha" id="name" name="name">
+          <input type="text" onblur=nameValidation() required  id="name" name="name">
           <br/>                     
             <label for="Registration">Registration No</label>
-            <input type="text" name="Registration" id="" placeholder="2015XXXX">
+            <input type="text" onblur=regiValid() name="Registration" id="regg">
             <br/> 
            
             <label for="Password">New Password</label>
-            <input type="password" name="pass" id="" placeholder="Enter new password">
+            <input type="password" name="pass" id="pass" >
             <br/>  
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" name="cpass" id="" placeholder="Confirm password">
+            <input type="password" onblur=checkPass() name="cpass" id="pass1">
             <br/> 
             <button type="submit" name="submit">SignUp</button>
             
@@ -53,6 +53,24 @@ function nameValidation() {
   if(regexp1.test(name)) {
     alert("Enter proper name");
   }
+}
+function regiValid(){
+    var reg=document.getElementById('regg').value;
+    var regexp2=new RegExp("[^0-9]");
+    if(regexp2.test(reg))
+    {alert("invalid regg no");
+    return;}
+    if(reg.length<8 || reg.length >8)
+    {
+        alert("invalid regg no");
+    }
+}
+function checkPass(){
+    var pass=document.getElementById('pass').value;
+    var pass1=document.getElementById('pass1').value;
+    if(pass1!=pass)
+    alert("Password doesn't match");
+
 }
 </script>
 <?php include("footer.php") ?>

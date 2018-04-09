@@ -10,11 +10,12 @@ $par_adr=$_POST['permanent_address'];
 $cgpa=$_POST['cgpa'];
 $ph_no=$_POST['phone_number'];
 $pph_no=$_POST['parent_phone_number'];
+$email=$_POST['email'];
 $s_id=$_SESSION['id'];
 $sql="select * from stu_det where s_id=$s_id;";
 $result=$conn->query($sql);
 if($result->num_rows==0){
-$sql="insert into stu_det(cgpa,sess,dept,roll_no,par_add,per_add,mob_no,p_mob_no,s_id,degr) values($cgpa,'$sess','$dept','$roll','$psn_adr','$par_adr','$ph_no','$pph_no',$s_id,'$degree');";
+$sql="insert into stu_det(cgpa,sess,dept,roll_no,par_add,per_add,mob_no,p_mob_no,s_id,degr,email) values($cgpa,'$sess','$dept','$roll','$psn_adr','$par_adr','$ph_no','$pph_no',$s_id,'$degree','$email');";
       if($conn->query($sql) ===true)
       {
            
@@ -28,7 +29,7 @@ $sql="insert into stu_det(cgpa,sess,dept,roll_no,par_add,per_add,mob_no,p_mob_no
 }
 else
 {
-$sql="update stu_det set cgpa=$cgpa,sess='$sess',dept='$dept',roll_no='$roll',par_add='$psn_adr',per_add='$par_adr',mob_no='$ph_no',p_mob_no='$pph_no',degr='$degree' where s_id=$s_id;";
+$sql="update stu_det set cgpa=$cgpa,sess='$sess',dept='$dept',roll_no='$roll',par_add='$psn_adr',per_add='$par_adr',mob_no='$ph_no',p_mob_no='$pph_no',degr='$degree',email='$email' where s_id=$s_id;";
 if($conn->query($sql) ===true)
 {
      

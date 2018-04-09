@@ -3,9 +3,22 @@ include("./common.php");
 include("./header.php");
 include "check.php";
 $name=$_SESSION['name'];
-
+$id=$_SESSION['id'];
 echo "<input type='text' id='username' hidden='true' value='$name'>";
-
+$sql="select * from student,stu_det where student.id=s_id";
+$result=$conn->query($sql);
+while($obj=mysqli_fetch_array($result)){
+  $dept=$obj['dept'];
+  $sess=$obj['sess'];
+  $cgpa=$obj['cgpa'];
+  $roll_no=$obj['roll_no'];
+  $psn_add=$obj['par_add'];
+  $par_add=$obj['per_add'];
+  $mob_no=$obj['mob_no'];
+  $p_mob_no=$obj['p_mob_no'];
+  $degr=$obj['degr'];
+  $email=$obj['email'];
+}
 
 ?>
 
@@ -25,7 +38,7 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
 </ul>
 
 <h1 class="header" style="color:white;">Student Profile</h1>
-      <div class="container">
+      <div class="container" style="padding-bottom:40px;">
 
       <form action="save_details.php" method="post">
               <header>Details</header>
@@ -35,7 +48,11 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
         
                 
                 <select name="department" id="department" class="dropdown">
+                <?php if(isset($dept)) {?>
+                  <option value="<?php echo $dept;?>"><?php echo $dept ?></option>
+                <?php } else {?>
                 <option value="0">select departement</option>
+                <?php }?>
                 <option value="IT">IT</option>
                 <option value="CS">CS</option>
                 <option value="CE">CE</option>
@@ -49,39 +66,47 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
           <label for="sesssion">Session</label>
           <br/>
           <select name="sess" id="session" class="dropdown">
+          <?php if(isset($sess)) {?>
+            <option value="<?php echo $sess;?>"><?php echo $sess;?></option>
+            <?php } else {?>
               <option value="0">Select Session</option>
-              <option value="17">2017-2021</option>
-              <option value="15">2015-2019</option>
-              <option value="16">2016-2020</option>
+              <?php }?>
+              <option value="2017-2021">2017-2021</option>
+              <option value="2015-2019">2015-2019</option>
+              <option value="2016-2020">2016-2020</option>
           </select>
           <br/>
           <label for="roll_no">Roll No</label>
-          <input type="text" onblur=rollNoValidation() name="roll_no" required id="rollno" placeholder="15/IT/XX">
+          <input type="text" onblur=rollNoValidation() name="roll_no" required id="rollno" value="<?php if(isset($roll_no)) echo $roll_no;?>">
           <br/>
           <label for="degree">Degree</label>
           <br/>
           <select name="degree" id="" class="dropdown">
+            <?php if(isset($degr)){ ?>
+              <option value="<?php echo $degr;?>"><?php echo $degr;?></option>
+            <?php }?>
+              
               <option value="B.TECH">B.TECH</option>
               <option value="M.TECH">M.TECH</option>
               <option value="MCA">MCA</option>
           </select>
           <br/>
           <label for="email">Email Id</label>
-          <input type="email" onblur="emailValidation()" name="email" reuqired id="email" placeholder="nitdgp@btech.com">
+          <input type="email" onblur="emailValidation()" name="email" reuqired id="email" value="<?php if(isset($email)) echo $email;?>">
 
           <label for="present_address">Present Address</label>
-          <input type="textarea" onblur=validation() name="present_address" id="present_address">
+          <input type="textarea" onblur=validation() name="present_address" value="<?php if(isset($psn_add)) echo $psn_add;?>" id="present_address">
         <label for="permanent_address">Permanent Address</label>             
-          <input type="textarea" name="permanent_address" id="permanent_address">
+          <input type="textarea" name="permanent_address" value="<?php if(isset($par_add)) echo $par_add;?>" id="permanent_address">
 
           <label for="cgpa">CGPA</label>
-          <input type="text" onblur=cgpaValidation() name="cgpa" id="cgpa">
+          <input type="text" onblur=cgpaValidation() name="cgpa" value="<?php if(isset($cgpa)) echo $cgpa;?>" id="cgpa">
 
           <label for="phone_number">Phone Number</label>
-          <input type="textbox" onblur=phonevalidation()  name="phone_number" id="phone_number">
+          <input type="textbox" onblur=phonevalidation()  name="phone_number" value="<?php if(isset($mob_no)) echo $mob_no;?>" id="phone_number">
 
           <label for="parent_phone_number">Parent Phone Number</label>
-          <input type="text" onblur=validation()  name="parent_phone_number" id="parent_phone_number">
+          <input type="text" onblur=validation()  name="parent_phone_number" value="<?php if(isset($p_mob_no)) echo $p_mob_no;?>" id="parent_phone_number">
 
           <button type="submit" name="submit">Save</button>
 
@@ -100,15 +125,18 @@ echo "<input type='text' id='username' hidden='true' value='$name'>";
   var roll_no=document.getElementById("rollno");
   var session=document.getElementById("session");
   var regno=document.getElementById("registration_no")
-  var a="";
-  var b="";
+  var a=dept.options[dept.selectedIndex].text;
+  var b=session.value;
+  var d=b.slice(2,4);
     dept.addEventListener("change",function(){
          a=dept.options[dept.selectedIndex].text;
+         roll_no.value=d+"/"+a+"/";
 
     });
     session.addEventListener("change",function(){
         b=session.value;
-        roll_no.value=b+"/"+a+"/";
+        d=b.slice(2,4);
+        roll_no.value=d+"/"+a+"/";
 
             regno.value="20"+b;
 
@@ -165,4 +193,3 @@ function registrationNoValidation() {
 
 </script>
 </html>
-<?php include("footer.php") ?>

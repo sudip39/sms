@@ -11,12 +11,12 @@
 <ul>
         <li><a href="index.php">Home</a></li>
         <div  style="float:right;">
-            <li><a href="admindetails.php">Admin</a></li>
+            <li><a href="admindetails.php">User Details</a></li>
         <li><a href="./logout.php">logout</a></li>
         </div>
 
       </ul>
-<div class="container">
+<div class="container" style="padding-top:40px;">
 
 <table>
     <tr>
@@ -29,7 +29,7 @@
     <tr>
     <td><?php echo $obj['name']; ?></td>
     <td><?php echo $obj['reg_no']; ?></td>
-    <td><a href="accept.php?id=<?php echo $obj['id']; ?>">Yes</a>/ <a href="reject.php?id=<?php echo $obj['id']; ?>">No</a></td>
+    <td ><a style="color:black;" href="accept.php?id=<?php echo $obj['id']; ?>">Yes</a>/ <a  style="color:black;" href="reject.php?id=<?php echo $obj['id']; ?>">No</a></td>
 
     </tr>
     <?php }?>

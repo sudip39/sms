@@ -1,6 +1,7 @@
 <?php
 include("common.php");
 include("header.php");
+session_destroy();
 ?>
 <body>
     <ul>

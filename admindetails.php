@@ -14,12 +14,13 @@
         </div>
 
       </ul>
-<div class="container">
+<div class="container" style="padding-top:40px;">
 
 <table>
     <tr>
     <th>Name</th>
     <th>Registration No</th>
+    <th>View</th>
     <th>Status</th>
     </tr>
     <?php while($obj=mysqli_fetch_array($result)) {?>
@@ -27,8 +28,9 @@
     <tr>
     <td><?php echo $obj['name']; ?></td>
     <td><?php echo $obj['reg_no']; ?></td>
-    
+    <td><a style="color:black;" href="adminview.php?id=<?php echo $obj['id']  ?>&name=<?php echo $obj['name']  ?>">View profile</a></td>
     <td><?php if( !is_null($obj['valid'])) if($obj['valid']) echo "Accepted"; else echo "rejected"; ?></td>
+   
     <?php }?>
     <?php } ?>
    
